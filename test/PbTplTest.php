@@ -11,7 +11,7 @@ class PbTplTest extends TestCase {
 
     public function setUp():void 
 	{
-        require_once __DIR__ . '/../PbClasses/autoloader.php';
+        require_once __DIR__ . '/../src/autoloader.php';
         $this->tplFile = __DIR__ . '/PbTplTest/test1.tpl';
         $this->t = new \PbClasses\PbTpl($this->tplFile);
     }
