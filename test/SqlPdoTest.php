@@ -12,16 +12,17 @@ class SqlPdoTest extends TestCase {
     const TEST_DATABASE = 'pdo_unittest';
     const TEST_TABLE = 'demo_persons';
     const TEST_TABLE2 = 'pbc__backnavi';
+    const PASSWORD = 'your_password';
 
     protected $db;
 
     public function setUp(): void {
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
-        require_once __DIR__ . '/../PbClasses/autoloader.php';
+        require_once __DIR__ . '/../src/autoloader.php';
         //($host = null, $user = null, $passw = null, $db = null, $port = 3306, $dbs = self::DEFAULT_DBS)
 
-        $this->db = new \PbClasses\DB\SqlPdo('localhost', 'root', '4zZ81sOs', self::TEST_DATABASE, 3306, 'mysql');
+        $this->db = new \PbClasses\DB\SqlPdo('localhost', 'root', self::PASSWORD, self::TEST_DATABASE, 3306, 'mysql');
         $this->db->setDebug();
         $this->db->dropTable(self::TEST_TABLE); //IF EXISTS
         $this->db->dropTable(self::TEST_TABLE2); //IF EXISTS
