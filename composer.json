@@ -1,0 +1,23 @@
+{
+    "name": "pbieling/pbclasses-min",
+    "description": "Composer Test for Peter",
+    "type": "library",
+    "require": {
+        "ext-pdo": "*",
+        "php": " >=8.1"
+    },
+    "require-dev": {
+        "ext-pdo_mysql": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PbClasses\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oliver Reddig",
+            "email": "oliver@reddig.hamburg"
+        }
+    ]
+}
