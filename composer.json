@@ -1,6 +1,7 @@
 {
     "name": "pbieling/pbclasses-min",
-    "description": "Composer Test for Peter",
+    "license": "MIT",
+    "description": "Minimal version of PbClasses, a PHP framework especially for small and medium projects.",
     "type": "library",
     "require": {
         "ext-pdo": "*",
@@ -16,8 +17,8 @@
     },
     "authors": [
         {
-            "name": "Oliver Reddig",
-            "email": "oliver@reddig.hamburg"
+            "name": "Peter Bieling",
+            "email": "pb@p-bieling.de"
         }
     ]
 }
