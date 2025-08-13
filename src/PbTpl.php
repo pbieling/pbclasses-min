@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
- * PbTpl - simple but effektive template engine
+ * PbTpl - Simple but effective template class
  *
- * @version   3.3
- * @link      http://www.media-palette.de/tools/pb-tpl/ (old version!)
- * @copyright Copyright (c) 2004 - 2016 Peter Bieling, info@media-palette.de
+ * @version   3.4
+ * @link      https://www.media-palette.de/demo/tpldemo/examples/index.php
+ * @copyright Copyright (c) 2004 - 2025 Peter Bieling - pb@p-bieling.de
  * @license   MIT
  * 
  */
@@ -52,8 +54,6 @@ class PbTpl {
         }
 
         $this->tplArr = array();
-        //@todo: \r ?
-        //  $lineArr = ($file) ? \file($template) : preg_split('/(?<=\n)/', $template);
         if ($file) {
             $lineArr = \file($template);
         } else {
@@ -63,10 +63,6 @@ class PbTpl {
             throw new \Exception('Problem on reading template file');
         }
 
-
-        // if (!\is_string($addIndex)) {
-        //     throw new \Exception('3rd parameter must be a string.');
-        // }
         $currIndex = $addIndex;
         if ($currIndex !== '') {
             $this->tplArr[$currIndex] = "";
@@ -116,7 +112,6 @@ class PbTpl {
         }
         $first = \substr($templine, 0, 1);
         if ($first === '\\' && $currIndex) {
-            // $pos = \mb_strpos($line, $first);
             $pos_ = \strpos($line, $first);
             if ($pos_ === false) {
                 throw new \Exception('strpos-Fehler');
@@ -152,8 +147,8 @@ class PbTpl {
      * @return string 
      */
     public function fillTpl(string $name, $search = array(), $replace = '') {
-        //Konvertieren, falls $replace kein String und kein Array ist
-        if (! \is_string($replace) && ! \is_array($replace)) {
+        //Convert if $replace is not a string and not an array.
+        if (!\is_string($replace) && !\is_array($replace)) {
             $replace = (string) $replace;
         }
         if (\is_string($search) && \is_string($replace) && $search !== '') {
@@ -202,9 +197,6 @@ class PbTpl {
      * @return string         The filled and concatenated row templates.
      */
     public function fillRowTpl(string $name, mixed $search, ?array $replace = null) {
-        //if ($replace !== null && !is_array($replace)) {
-        //    throw new \Exception('3rd parameter must be null or array');
-        //}
         $buffer = "";
         if ($replace === null) {
             foreach ($search as $lineArr) {
@@ -234,7 +226,7 @@ class PbTpl {
         return false;
     }
 
-    //Methods for manipulation of the template array (usually the content of a template file with the 
+    //Method for manipulatiog a template array (usually the content of a template file with the 
     //key-value-pairs of the template snippets.
 
     /**
@@ -296,5 +288,4 @@ class PbTpl {
         unset($this->tplArr[$key]);
         return true;
     }
-
 }
